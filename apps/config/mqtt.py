@@ -5,7 +5,7 @@ from django.conf import settings
 def on_connect(mqtt_client, userdata, flags, rc):
     if rc == 0:
         print('Connected successfully')
-        mqtt_client.subscribe('django/mqtt-matiasformosa')
+        mqtt_client.subscribe('application/#')
     else:
         print('Bad connection. Code:', rc)
 
