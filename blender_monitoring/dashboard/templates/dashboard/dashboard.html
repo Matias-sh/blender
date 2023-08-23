@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Monitoreo</title>
+</head>
+<body>
+    <h1>Datos de Monitoreo</h1>
+    <ul>
+        {% for data in monitoring_data %}
+        <li>{{ data.timestamp }} - Oxygen: {{ data.oxygen }}, Pressure: {{ data.pressure }}, Flow: {{ data.flow }}, CO2: {{ data.co2 }}, SPO2: {{ data.spo2 }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Logs de Alarma</h2>
+    <ul>
+        {% for log in alarm_logs %}
+        <li>{{ log.timestamp }} - {{ log.message }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
