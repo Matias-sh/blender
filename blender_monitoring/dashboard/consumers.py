@@ -5,6 +5,7 @@ from .models import MonitoringData, AlarmLog
 
 class MQTTConsumer(AsyncHttpConsumer):
     async def handle(self, body):
+        print("entro handle")
         self.mqtt_client = mqtt.Client()
 
         def on_connect(client, userdata, flags, rc):
