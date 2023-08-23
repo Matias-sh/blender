@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'apps.monitoring'
 ]
 
 MIDDLEWARE = [
@@ -56,7 +57,7 @@ ROOT_URLCONF = 'blender.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['blender/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -87,10 +88,7 @@ DATABASES = {
 # Configuración del backend de Channels (Redis)
 CHANNEL_LAYERS = {
     'default': {
-        'BACKEND': 'channels_redis.core.RedisChannelLayer',
-        'CONFIG': {
-            "hosts": [('127.0.0.1', 6379)],
-        },
+        'BACKEND': 'channels.layers.InMemoryChannelLayer',
     },
 }
 
