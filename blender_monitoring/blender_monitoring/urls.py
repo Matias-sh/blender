@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from dashboard.views import dashboard_view
+from dashboard import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('dashboard/', dashboard_view, name='dashboard'),
+    path('dashboard/', views.dashboard_view, name='dashboard'),
+    path('get_latest_data/', views.get_latest_data, name='get_latest_data'),
 ]

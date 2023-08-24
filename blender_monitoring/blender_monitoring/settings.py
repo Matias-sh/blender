@@ -17,6 +17,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -33,6 +34,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'daphne',
+    'channels',
     'dashboard',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -70,9 +72,22 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'blender_monitoring.wsgi.application'
+#WSGI_APPLICATION = 'blender_monitoring.wsgi.application'
 
-ASGI_APPLICATION = 'blender_monitoring.routing.application'
+ASGI_APPLICATION = 'blender_monitoring.asgi.application'
+
+
+# Configuración de Channel Layers
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels.layers.InMemoryChannelLayer',  # Usar InMemoryLayer para pruebas locales
+        # O usar Redis como backend en un entorno de producción:
+        # 'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        # 'CONFIG': {
+        #     "hosts": [('127.0.0.1', 6379)],
+        # },
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases

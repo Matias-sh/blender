@@ -1,21 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Monitoreo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
 </head>
 <body>
-    <h1>Datos de Monitoreo</h1>
-    <ul>
-        {% for data in monitoring_data %}
-        <li>{{ data.timestamp }} - Oxygen: {{ data.oxygen }}, Pressure: {{ data.pressure }}, Flow: {{ data.flow }}, CO2: {{ data.co2 }}, SPO2: {{ data.spo2 }}</li>
-        {% endfor %}
-    </ul>
+    <h1>Dashboard</h1>
+    <!-- ... (código anterior) ... -->
 
-    <h2>Logs de Alarma</h2>
-    <ul>
-        {% for log in alarm_logs %}
-        <li>{{ log.timestamp }} - {{ log.message }}</li>
-        {% endfor %}
-    </ul>
+<!-- dashboard.html -->
+
+<!-- ... (código anterior) ... -->
+
+<label for="oxygen">Oxígeno:</label>
+<span id="oxygen"></span><br>
+
+<label for="pressure">Presión:</label>
+<span id="pressure"></span><br>
+
+<label for="flow">Flujo:</label>
+<span id="flow"></span><br>
+
+<label for="co2">CO2:</label>
+<span id="co2"></span><br>
+
+<label for="spo2">SPO2:</label>
+<span id="spo2"></span><br>
+
+<label for="alarm">Alerta:</label>
+<span id="alarm"></span><br>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    const socket = new WebSocket('ws://localhost:8000/ws/mqtt_consumer/');
+
+    function updateLatestData() {
+        $.ajax({
+            url: '/get_latest_data/',  // URL de la vista para obtener el último dato
+            method: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                $('#oxygen').text(data.oxygen);
+                $('#pressure').text(data.pressure);
+                $('#flow').text(data.flow);
+                $('#co2').text(data.co2);
+                $('#spo2').text(data.spo2);
+                $('#alarm').text(data.alarm ? 'Activada' : 'Desactivada');
+            }
+        });
+    }
+
+    // Actualizar cada 5 segundos (ajusta según tus necesidades)
+    setInterval(updateLatestData, 5000);
+</script>
+
 </body>
 </html>

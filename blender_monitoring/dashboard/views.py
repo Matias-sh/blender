@@ -1,11 +1,27 @@
 from django.shortcuts import render
-from .models import MonitoringData, AlarmLog
+from django.http import JsonResponse
+from .models import MonitoringData
 
 def dashboard_view(request):
-    monitoring_data = MonitoringData.objects.all().order_by('-timestamp')[:10]
-    alarm_logs = AlarmLog.objects.all().order_by('-timestamp')[:10]
+    latest_data = MonitoringData.objects.last()
     context = {
-        'monitoring_data': monitoring_data,
-        'alarm_logs': alarm_logs,
+        'latest_data': latest_data,
     }
     return render(request, 'dashboard/dashboard.html', context)
+
+
+def get_latest_data(request):
+    latest_data = MonitoringData.objects.last()
+    if latest_data:
+        data = {
+            'oxygen': latest_data.oxygen,
+            'pressure': latest_data.pressure,
+            'flow': latest_data.flow,
+            'co2': latest_data.co2,
+            'spo2': latest_data.spo2,
+            'alarm': latest_data.alarm
+        }
+    else:
+        data = {}
+    return JsonResponse(data)
+

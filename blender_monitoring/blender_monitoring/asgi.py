@@ -1,8 +1,10 @@
+# asgi.py
+
 import os
 from django.core.asgi import get_asgi_application
 from channels.routing import ProtocolTypeRouter, URLRouter
 from channels.auth import AuthMiddlewareStack
-from blender_monitoring.routing import application as dashboard_routing
+from dashboard.routing import websocket_urlpatterns
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "blender_monitoring.settings")
 
@@ -10,7 +12,7 @@ application = ProtocolTypeRouter({
     "http": get_asgi_application(),
     "websocket": AuthMiddlewareStack(
         URLRouter(
-            dashboard_routing
+            websocket_urlpatterns
         )
     ),
 })
