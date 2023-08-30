@@ -3,15 +3,12 @@ import django
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "blender_monitoring.settings")
 django.setup()
 
+import asyncio
 import paho.mqtt.client as mqtt
 from channels.generic.websocket import AsyncWebsocketConsumer
 from .models import MonitoringData, AlarmLog
+from celery import shared_task
 import json
-
-import json
-import paho.mqtt.client as mqtt
-from channels.generic.websocket import AsyncWebsocketConsumer
-from .models import MonitoringData
 
 class MQTTConsumer(AsyncWebsocketConsumer):
 
@@ -27,6 +24,7 @@ class MQTTConsumer(AsyncWebsocketConsumer):
         self.mqtt_client.loop_stop()
 
     def on_message(self, client, userdata, msg):
+        print("entro")
         try:
             payload = msg.payload.decode("utf-8")
             data = json.loads(payload)

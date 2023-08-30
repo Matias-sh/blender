@@ -8,6 +8,16 @@ class MonitoringData(models.Model):
     co2 = models.FloatField()
     spo2 = models.FloatField()
     alarm = models.BooleanField(default=False)
+    #id_paciente
+    
+
+#class Paciente(models.model):
+    #id_paciente
+    #nombre
+    #apellido
+    #peso
+    #altura
+    #sexo
 
     def __str__(self):
         return f"Data: {self.timestamp}"
