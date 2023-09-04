@@ -16,8 +16,9 @@ class MQTTConsumer(AsyncWebsocketConsumer):
         await self.accept()
         self.mqtt_client = mqtt.Client()
         self.mqtt_client.on_message = self.on_message
-        self.mqtt_client.connect("localhost", 1883, 60)
-        self.mqtt_client.subscribe("polo/blender_dashboard")
+        self.mqtt_client.username_pw_set(username="matias777", password="matiasdeb777")
+        self.mqtt_client.connect("192.168.216.105", 1883, 60)
+        self.mqtt_client.subscribe("polo/blender_monitoring")
         self.mqtt_client.loop_start()
 
     async def disconnect(self, close_code):
