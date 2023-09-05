@@ -1,8 +1,26 @@
 {% extends 'bases/base.html' %}
+{% load static %}
 
 {% block datos %}
 <div class="col-md-12" style="padding:20px;">
     <div class="col-md-6">
+        <!-- Ventana emergente para la alarma con diseño de alerta roja -->
+        <div class="modal" tabindex="-1" role="dialog" id="alarm-modal">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content alert alert-danger">
+                    <div class="modal-header">
+                        <h5 class="modal-title">¡Alerta activada!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" style="position: absolute; top: 10px; right: 10px;">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Hubo un problema en el dispositivo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="panel box-v1">
             <div class="panel-heading bg-white border-none">
                 <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
@@ -10,7 +28,7 @@
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-6 text-right">
                     <h4>
-                        <span class="icon-user icons icon text-right"></span>
+                        <span><img src="{% static 'asset/img/dashboard/icon-oxygen.png' %}" class="icons icon text-right" width="20px" height="20px"></span>
                     </h4>
                 </div>
             </div>
@@ -46,7 +64,7 @@
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-6 text-right">
                     <h4>
-                        <span class="icon-user icons icon text-right"></span>
+                        <i class="fa-solid fa-wind icons icon text-right"></i>
                     </h4>
                 </div>
             </div>
@@ -78,7 +96,7 @@
         <div class="panel box-v1">
             <div class="panel-heading bg-white border-none">
                 <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
-                    <h4 class="text-left">SPO2</h4>
+                    <h4 class="text-left">Saturación de Oxígeno SPO2</h4>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-6 text-right">
                     <h4>
@@ -91,6 +109,54 @@
                 <hr/>
             </div>
         </div>
+        <div class="container-ekg">
+            <div class="grid">
+              <div class="col-10_sm-12">PATIENT ID #1888450</div>
+              <div class="col-2_sm-12">12/04/18 20:15</div>
+            </div>
+          </div>
+          <div class="container-ekg">
+              <div class="grid">
+                  <div class="col-10_sm-12 graph">
+           
+                          <div class="cell cell-1"></div>
+                          <div class="cell cell-2"></div>
+                          <div class="cell cell-3"></div>
+                          <div class="cell cell-4"></div>
+                          <div class="cell cell-5"></div>
+                          <div class="cell cell-6"></div>
+          
+                  </div>
+                  
+                  <div class="col-2_sm-12">
+                      <div class="number-1"><span>&#9829;</span></div>
+                  </div>
+            </div>
+          </div>
+              
+              
+              
+              
+          <svg width="0" height="0" class="filters">
+              <defs>
+                  <filter id="filter0_dd" x="0.858887" y="28.9809" width="644.262" height="124.108" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                  <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                  <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+                  <feOffset/>
+                  <feGaussianBlur stdDeviation="2"/>
+                  <feColorMatrix type="matrix" values="0 0 0 0 0.215686 0 0 0 0 0.686275 0 0 0 0 0.54902 0 0 0 1 0"/>
+                  <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+                  <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+                  <feOffset/>
+                  <feGaussianBlur stdDeviation="4"/>
+                  <feColorMatrix type="matrix" values="0 0 0 0 0.215686 0 0 0 0 0.686275 0 0 0 0 0.54902 0 0 0 1 0"/>
+                  <feBlend mode="normal" in2="effect1_dropShadow" result="effect2_dropShadow"/>
+                  <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow" result="shape"/>
+                  </filter>
+              
+          
+              </defs>
+          </svg>
     </div>
     <div class="col-md-6">
         <div class="panel box-v1">
@@ -109,14 +175,6 @@
                 <hr/>
             </div>
         </div>
-    </div>
-
-    <!-- Alerta de Bootstrap para la alarma -->
-    <div class="alert alert-danger alert-dismissible fade show" role="alert" id="alarm-alert" style="display: none;">
-        <strong>¡Alerta activada!</strong> Hubo un problema en el dispositivo.
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -138,9 +196,9 @@
 
                     // Mostrar u ocultar la alerta de Bootstrap según la alarma
                     if (data.alarm) {
-                        $('#alarm-alert').show();
+                        $('#alarm-modal').modal('show'); // Muestra la ventana emergente
                     } else {
-                        $('#alarm-alert').hide();
+                        $('#alarm-modal').modal('hide'); // Oculta la ventana emergente
                     }
                 }
             });
