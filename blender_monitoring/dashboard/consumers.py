@@ -25,7 +25,6 @@ class MQTTConsumer(AsyncWebsocketConsumer):
         self.mqtt_client.loop_stop()
 
     def on_message(self, client, userdata, msg):
-        print("entro")
         try:
             payload = msg.payload.decode("utf-8")
             data = json.loads(payload)

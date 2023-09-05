@@ -1,36 +1,11 @@
-{% extends 'bases/base.html' %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-</head>
-<body>
-    <h1>Dashboard</h1>
-    <!-- ... (código anterior) ... -->
-
-<!-- dashboard.html -->
-
-<!-- ... (código anterior) ... -->
-
-<label for="oxygen">Oxígeno:</label>
-<span id="oxygen"></span><br>
-
-<label for="pressure">Presión:</label>
-<span id="pressure"></span><br>
-
-<label for="flow">Flujo:</label>
-<span id="flow"></span><br>
-
-<label for="co2">CO2:</label>
-<span id="co2"></span><br>
-
-<label for="spo2">SPO2:</label>
-<span id="spo2"></span><br>
-
 <label for="alarm">Alerta:</label>
-<span id="alarm"></span><br>
+<span id="alarm"></span>
+<span id="alarm-alert"></span><br>
+
+<!-- Agregar una alerta emergente de Bootstrap -->
+<div class="alert alert-danger" id="alarm-alert-box" style="display: none;">
+    ¡Alerta activada!
+</div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
@@ -48,6 +23,13 @@
                 $('#co2').text(data.co2);
                 $('#spo2').text(data.spo2);
                 $('#alarm').text(data.alarm ? 'Activada' : 'Desactivada');
+
+                // Mostrar o ocultar la alerta de Bootstrap según la alarma
+                if (data.alarm) {
+                    $('#alarm-alert-box').show();
+                } else {
+                    $('#alarm-alert-box').hide();
+                }
             }
         });
     }
@@ -55,6 +37,3 @@
     // Actualizar cada 5 segundos (ajusta según tus necesidades)
     setInterval(updateLatestData, 200);
 </script>
-
-</body>
-</html>

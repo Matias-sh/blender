@@ -1,141 +1,153 @@
 {% extends 'bases/base.html' %}
 
 {% block datos %}
-    <div class="col-md-12" style="padding:20px;">
-                    <div class="col-md-6">
-                        <div class="panel box-v1">
-                          <div class="panel-heading bg-white border-none">
-                            <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
-                              <h4 class="text-left">Oxigeno</h4>
-                            </div>
-                            <div class="col-md-6 col-sm-6 col-xs-6 text-right">
-                               <h4>
-                               <span class="icon-user icons icon text-right"></span>
-                               </h4>
-                            </div>
-                          </div>
-                          <div class="panel-body text-center">
-                            <h1 id="oxygen"></h1>
-                            <hr/>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="panel box-v1">
-                          <div class="panel-heading bg-white border-none">
-                            <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
-                              <h4 class="text-left">Presión</h4>
-                            </div>
-                            <div class="col-md-6 col-sm-6 col-xs-6 text-right">
-                               <h4>
-                               <span class="icon-user icons icon text-right"></span>
-                               </h4>
-                            </div>
-                          </div>
-                          <div class="panel-body text-center">
-                            <h1 id="pressure"></h1>
-                            <hr/>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="panel box-v1">
-                          <div class="panel-heading bg-white border-none">
-                            <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
-                              <h4 class="text-left">Flujo</h4>
-                            </div>
-                            <div class="col-md-6 col-sm-6 col-xs-6 text-right">
-                               <h4>
-                               <span class="icon-user icons icon text-right"></span>
-                               </h4>
-                            </div>
-                          </div>
-                          <div class="panel-body text-center">
-                            <h1 id="flow"></h1>
-                            <hr/>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="panel box-v1">
-                          <div class="panel-heading bg-white border-none">
-                            <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
-                              <h4 class="text-left">CO2</h4>
-                            </div>
-                            <div class="col-md-6 col-sm-6 col-xs-6 text-right">
-                               <h4>
-                               <span class="icon-user icons icon text-right"><span></span></span>
-                               </h4>
-                            </div>
-                          </div>
-                          <div class="panel-body text-center">
-                            <h1 id="co2"></h1>
-                            <hr/>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="panel box-v1">
-                          <div class="panel-heading bg-white border-none">
-                            <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
-                              <h4 class="text-left">SPO2</h4>
-                            </div>
-                            <div class="col-md-6 col-sm-6 col-xs-6 text-right">
-                               <h4>
-                               <span class="icon-user icons icon text-right"><span></span></span>
-                               </h4>
-                            </div>
-                          </div>
-                          <div class="panel-body text-center">
-                            <h1 id="spo2"></h1>
-                            <hr/>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="panel box-v1">
-                          <div class="panel-heading bg-white border-none">
-                            <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
-                              <h4 class="text-left">Alerta</h4>
-                            </div>
-                            <div class="col-md-6 col-sm-6 col-xs-6 text-right">
-                               <h4>
-                               <span class="icon-user icons icon text-right"></span>
-                               </h4>
-                            </div>
-                          </div>
-                          <div class="panel-body text-center">
-                            <h1 id="alarm"></h1>
-                            <hr/>
-                          </div>
-                        </div>
-                    </div>
+<div class="col-md-12" style="padding:20px;">
+    <div class="col-md-6">
+        <div class="panel box-v1">
+            <div class="panel-heading bg-white border-none">
+                <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
+                    <h4 class="text-left">Oxigeno</h4>
                 </div>
-
+                <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                    <h4>
+                        <span class="icon-user icons icon text-right"></span>
+                    </h4>
+                </div>
+            </div>
+            <div class="panel-body text-center">
+                <h1 id="oxygen"></h1>
+                <hr/>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel box-v1">
+            <div class="panel-heading bg-white border-none">
+                <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
+                    <h4 class="text-left">Presión</h4>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                    <h4>
+                        <span class="icon-user icons icon text-right"></span>
+                    </h4>
+                </div>
+            </div>
+            <div class="panel-body text-center">
+                <h1 id="pressure"></h1>
+                <hr/>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel box-v1">
+            <div class="panel-heading bg-white border-none">
+                <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
+                    <h4 class="text-left">Flujo</h4>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                    <h4>
+                        <span class="icon-user icons icon text-right"></span>
+                    </h4>
+                </div>
+            </div>
+            <div class="panel-body text-center">
+                <h1 id="flow"></h1>
+                <hr/>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel box-v1">
+            <div class="panel-heading bg-white border-none">
+                <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
+                    <h4 class="text-left">CO2</h4>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                    <h4>
+                        <span class="icon-user icons icon text-right"><span></span></span>
+                    </h4>
+                </div>
+            </div>
+            <div class="panel-body text-center">
+                <h1 id="co2"></h1>
+                <hr/>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel box-v1">
+            <div class="panel-heading bg-white border-none">
+                <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
+                    <h4 class="text-left">SPO2</h4>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                    <h4>
+                        <span class="icon-user icons icon text-right"><span></span></span>
+                    </h4>
+                </div>
+            </div>
+            <div class="panel-body text-center">
+                <h1 id="spo2"></h1>
+                <hr/>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel box-v1">
+            <div class="panel-heading bg-white border-none">
+                <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
+                    <h4 class="text-left">Alerta</h4>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                    <h4>
+                        <span class="icon-user icons icon text-right"></span>
+                    </h4>
+                </div>
+            </div>
+            <div class="panel-body text-center">
+                <h1 id="alarm"></h1>
+                <hr/>
+            </div>
+        </div>
     </div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    const socket = new WebSocket('ws://localhost:8000/ws/mqtt_consumer/');
+    <!-- Alerta de Bootstrap para la alarma -->
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" id="alarm-alert" style="display: none;">
+        <strong>¡Alerta activada!</strong> Hubo un problema en el dispositivo.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
 
-    function updateLatestData() {
-        $.ajax({
-            url: '/get_latest_data/',  // URL de la vista para obtener el último dato
-            method: 'GET',
-            dataType: 'json',
-            success: function(data) {
-                $('#oxygen').text(data.oxygen);
-                $('#pressure').text(data.pressure);
-                $('#flow').text(data.flow);
-                $('#co2').text(data.co2);
-                $('#spo2').text(data.spo2);
-                $('#alarm').text(data.alarm ? 'Activada' : 'Desactivada');
-            }
-        });
-    }
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        const socket = new WebSocket('ws://localhost:8000/ws/mqtt_consumer/');
 
-    // Actualizar cada 5 segundos (ajusta según tus necesidades)
-    setInterval(updateLatestData, 5000);
-</script>
+        function updateLatestData() {
+            $.ajax({
+                url: '/get_latest_data/',  // URL de la vista para obtener el último dato
+                method: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    $('#oxygen').text(data.oxygen);
+                    $('#pressure').text(data.pressure);
+                    $('#flow').text(data.flow);
+                    $('#co2').text(data.co2);
+                    $('#spo2').text(data.spo2);
+                    $('#alarm').text(data.alarm ? 'Activada' : 'Desactivada');
 
+                    // Mostrar u ocultar la alerta de Bootstrap según la alarma
+                    if (data.alarm) {
+                        $('#alarm-alert').show();
+                    } else {
+                        $('#alarm-alert').hide();
+                    }
+                }
+            });
+        }
+
+        // Actualizar cada 5 segundos (ajusta según tus necesidades)
+        setInterval(updateLatestData, 5000);
+    </script>
+</div>
 {% endblock datos %}
