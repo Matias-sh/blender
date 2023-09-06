@@ -8,7 +8,6 @@
 .number-1:after {
   display: block;
   position: absolute;
-  content: "60";
   width: 12rem;
   height: 10rem;
   top: 0;
@@ -23,19 +22,9 @@
   animation: beat 1s infinite;
 }
 
-body {
-  background: #151515;
-  margin: 2rem 0;
-  background-position: top left, top right;
-  color: #37af8c;
-  font-family: "Exo 2", sans-serif;
-  font-size: 18px;
-  text-shadow: 0 0 4px #37af8c;
-}
-body:after {
+.container-ekg:after {
   /* Interlace effect */
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.2) 80%);
-  background-size: 5px 3px;
+  
   display: block;
   position: absolute;
   content: "";
@@ -45,13 +34,29 @@ body:after {
   left: 0;
 }
 
+.text-ekg {
+  color: #37af8c;
+  font-family: "Exo 2", sans-serif;
+  font-size: 18px;
+  text-shadow: 0 0 4px #37af8c;
+}
+
 .container-ekg {
-  width: 800px;
+  width: 350px;
+  height: 100px;
   margin: 0 auto;
+  background: #151515;
+  margin: 2rem 0;
+  background-position: top left, top right;
+  color: #37af8c;
+  font-family: "Exo 2", sans-serif;
+  font-size: 18px;
+  text-shadow: 0 0 4px #37af8c;
 }
 
 .graph {
   /* the green gradient */
+  
   outline: 1px #37af8c solid;
   box-shadow: 0 0 4px #37af8c;
   padding: 0;
@@ -60,10 +65,11 @@ body:after {
   display: flex;
   background-size: 100% auto;
   background-position: -380px 0;
-  height: 200px;
+  height: 100px;
 }
 
 .cell {
+  
   margin: 0;
   display: flex;
   width: 16.7%;
