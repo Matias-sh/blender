@@ -181,33 +181,44 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        const socket = new WebSocket('ws://localhost:8000/ws/mqtt_consumer/');
-
-        function updateLatestData() {
-            $.ajax({
-                url: '/get_latest_data/',  // URL de la vista para obtener el último dato
-                method: 'GET',
-                dataType: 'json',
-                success: function(data) {
-                    $('#oxygen').text(data.oxygen);
-                    $('#pressure').text(data.pressure);
-                    $('#flow').text(data.flow);
-                    $('#co2').text(data.co2);
-                    $('#spo2').text(data.spo2);
-                    $('#alarm').text(data.alarm ? 'Activada' : 'Desactivada');
-
-                    // Mostrar u ocultar la alerta de Bootstrap según la alarma
-                    if (data.alarm) {
-                        $('#alarm-modal').modal('show'); // Muestra la ventana emergente
-                    } else {
-                        $('#alarm-modal').modal('hide'); // Oculta la ventana emergente
-                    }
+        const socket = new WebSocket('ws://192.168.216.113:8000/ws/mqtt_consumer/');
+    
+        socket.onopen = function(event) {
+            console.log("WebSocket connected successfully.");
+        };
+    
+        socket.onmessage = function(event) {
+            console.log("Mensaje recibido a través de WebSocket");
+            try {
+                const data = JSON.parse(event.data);
+                $('#oxygen').text(data.oxygen);
+                $('#pressure').text(data.pressure);
+                $('#flow').text(data.flow);
+                $('#co2').text(data.co2);
+                $('#spo2').text(data.spo2);
+                $('#alarm').text(data.alarm ? 'Activada' : 'Desactivada');
+    
+                if (data.alarm) {
+                    $('#alarm-modal').modal('show');
+                } else {
+                    $('#alarm-modal').modal('hide');
                 }
-            });
-        }
-
-        // Actualizar cada 5 segundos (ajusta según tus necesidades)
-        setInterval(updateLatestData, 5000);
+            } catch (error) {
+                console.error("Error parsing WebSocket message:", error);
+            }
+        };
+    
+        socket.onerror = function(error) {
+            console.error("WebSocket Error:", error);
+        };
+    
+        socket.onclose = function(event) {
+            if (event.wasClean) {
+                console.log(`Connection closed cleanly, code=${event.code}, reason=${event.reason}`);
+            } else {
+                console.error('Connection died');
+            }
+        };
     </script>
 </div>
 {% endblock datos %}
