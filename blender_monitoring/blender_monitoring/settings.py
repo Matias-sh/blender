@@ -33,9 +33,17 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    ### Api
+    'rest_framework',
+
+    ### MQTT
     'daphne',
     'channels',
+
+    ### Apps
     'dashboard',
+    
+    ### Default
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -10,6 +10,8 @@ class MonitoringData(models.Model):
     alarm = models.BooleanField(default=False)
     #id_paciente
     
+    def __str__(self):
+        return f"Data: {self.timestamp}"
 
 #class Paciente(models.model):
     #id_paciente
@@ -19,8 +21,7 @@ class MonitoringData(models.Model):
     #altura
     #sexo
 
-    def __str__(self):
-        return f"Data: {self.timestamp}"
+    
 
 class AlarmLog(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
@@ -28,3 +29,10 @@ class AlarmLog(models.Model):
 
     def __str__(self):
         return f"Alarm: {self.timestamp}"
+
+class SensorReading():
+    timestamp = models.DateTimeField(auto_now_add=True)
+    ph_value = models.FloatField()
+
+    def __str__(self):
+        return f"{self.ph_value} at {self.timestamp}"
