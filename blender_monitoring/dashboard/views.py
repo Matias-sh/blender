@@ -9,6 +9,10 @@ def dashboard_view(request):
     }
     return render(request, 'dashboard/dashboard.html', context)
 
+# Vista de prueba para validar rutas
+def test_view(request):
+    return JsonResponse({'message': 'Dashboard app is working!'})
+
 
 def get_latest_data(request):
     latest_data = MonitoringData.objects.last()
